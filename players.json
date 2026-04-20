@@ -131,6 +131,12 @@
       "region": "EU",
       "tiers": {},
       "added": "2026-04-20T07:24:22.871338"
+    },
+    "kornocs": {
+      "name": "kornocs",
+      "region": "EU",
+      "tiers": {},
+      "added": "2026-04-20T07:25:50.240088"
     }
   }
 }
