@@ -17,7 +17,9 @@
     "darknitw": {
       "name": "darknitw",
       "region": "EU",
-      "tiers": {},
+      "tiers": {
+        "mace": "Tier 1"
+      },
       "added": "2026-04-20T05:56:31.508135"
     },
     "meepv1": {
