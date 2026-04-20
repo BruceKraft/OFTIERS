@@ -113,6 +113,12 @@
       "region": "NA",
       "tiers": {},
       "added": "2026-04-20T07:22:54.354222"
+    },
+    "knackv": {
+      "name": "knackv",
+      "region": "EU",
+      "tiers": {},
+      "added": "2026-04-20T07:23:06.185707"
     }
   }
 }
