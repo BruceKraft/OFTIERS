@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OF Tiers — Rankings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0b0c10;
+    --bg2: #111318;
+    --bg3: #181b22;
+    --border: rgba(255,255,255,0.07);
+    --border-bright: rgba(255,255,255,0.13);
+    --text: #e8eaf0;
+    --muted: #7a7f91;
+    --accent: #4ade80;
+    --accent-dim: rgba(74,222,128,0.12);
+
+    --t1: #ffd700; --t1-bg: rgba(255,215,0,0.13);   --t1-bd: rgba(255,215,0,0.3);
+    --t2: #f5820a; --t2-bg: rgba(245,130,10,0.13);  --t2-bd: rgba(245,130,10,0.3);
+    --t3: #e05252; --t3-bg: rgba(224,82,82,0.13);   --t3-bd: rgba(224,82,82,0.3);
+    --t4: #9b7bf7; --t4-bg: rgba(155,123,247,0.13); --t4-bd: rgba(155,123,247,0.3);
+    --t5: #6a6a7e; --t5-bg: rgba(106,106,126,0.13); --t5-bd: rgba(106,106,126,0.3);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: 'Rajdhani', sans-serif; font-size: 16px;
+    min-height: 100vh; line-height: 1.5;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+    pointer-events: none; z-index: 999;
+  }
+
+  /* HEADER */
+  header { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 0 2rem; position: sticky; top: 0; z-index: 50; }
+  .header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 2rem; height: 56px; }
+  .site-logo {
+    font-family: 'Press Start 2P', monospace; font-size: 11px; color: var(--accent);
+    letter-spacing: 1px; white-space: nowrap; text-shadow: 0 0 20px rgba(74,222,128,0.4); text-decoration: none;
+  }
+  .header-nav { display: flex; align-items: center; gap: 1.5rem; margin-left: auto; }
+  .header-nav a { color: var(--muted); font-size: 14px; font-weight: 600; text-decoration: none; letter-spacing: 0.5px; transition: color 0.15s; }
+  .header-nav a:hover { color: var(--text); }
+  .header-nav a.active { color: var(--accent); }
+
+  /* TABS */
+  .tabs-bar { background: var(--bg2); border-bottom: 1px solid var(--border); }
+  .tabs-inner { max-width: 1100px; margin: 0 auto; display: flex; overflow-x: auto; gap: 0; scrollbar-width: none; }
+  .tabs-inner::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    display: flex; flex-direction: column; align-items: center; gap: 5px;
+    padding: 10px 16px;
+    font-family: 'Rajdhani', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.4px;
+    color: var(--muted); background: none; border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer; white-space: nowrap; transition: color 0.15s, border-color 0.15s;
+  }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active { color: var(--text); border-bottom-color: var(--accent); }
+
+  .mode-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    border: 1.5px solid rgba(255,255,255,0.12);
+    transition: border-color 0.15s, opacity 0.15s;
+    opacity: 0.6; flex-shrink: 0;
+  }
+  .tab-btn:hover .mode-icon { opacity: 0.9; }
+  .tab-btn.active .mode-icon { opacity: 1; border-color: rgba(255,255,255,0.28); }
+  .mode-icon svg { width: 18px; height: 18px; display: block; }
+
+  .mi-overall  { background: #2a2000; } .mi-overall  svg { fill: #ffc130; }
+  .mi-ltm      { background: #1a1a2a; } .mi-ltm      svg { fill: #9090c0; }
+  .mi-vanilla  { background: #1a2520; } .mi-vanilla  svg { fill: #60c090; }
+  .mi-uhc      { background: #2a1515; } .mi-uhc      svg { fill: #e05050; }
+  .mi-pot      { background: #201520; } .mi-pot      svg { fill: #c070d0; }
+  .mi-nethop   { background: #251008; } .mi-nethop   svg { fill: #e07030; }
+  .mi-smp      { background: #102510; } .mi-smp      svg { fill: #40c040; }
+  .mi-sword    { background: #101825; } .mi-sword    svg { fill: #4090d0; }
+  .mi-axe      { background: #18100a; } .mi-axe      svg { fill: #c07840; }
+  .mi-mace     { background: #151520; } .mi-mace     svg { fill: #8080c0; }
+  .mi-dsmp     { background: #0a1830; } .mi-dsmp     svg { fill: #60b0ff; }
+  .mi-cart     { background: #201808; } .mi-cart     svg { fill: #d0a030; }
+
+  /* MAIN */
+  main { max-width: 1100px; margin: 0 auto; padding: 2rem; display: grid; grid-template-columns: 1fr 220px; gap: 1.5rem; align-items: start; }
+
+  /* TABLE */
+  .rankings-wrap { min-width: 0; }
+  .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+  .section-title { font-family: 'Press Start 2P', monospace; font-size: 9px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
+  .search-box {
+    background: var(--bg3); border: 1px solid var(--border-bright); border-radius: 6px;
+    padding: 6px 12px; color: var(--text); font-family: 'Rajdhani', sans-serif;
+    font-size: 14px; width: 200px; outline: none; transition: border-color 0.15s;
+  }
+  .search-box:focus { border-color: var(--accent); }
+  .search-box::placeholder { color: var(--muted); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  thead th { text-align: left; padding: 8px 12px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--border); }
+  thead th.right { text-align: right; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
+  tbody tr:hover { background: rgba(255,255,255,0.03); }
+  tbody td { padding: 10px 12px; vertical-align: middle; }
+
+  .rank-num { font-family: 'Press Start 2P', monospace; font-size: 9px; color: var(--muted); min-width: 36px; display: inline-block; text-align: right; }
+  .rank-num.top { color: var(--accent); }
+
+  .player-cell { display: flex; align-items: center; gap: 10px; }
+  .player-avatar { width: 28px; height: 28px; border-radius: 4px; background: var(--bg3); border: 1px solid var(--border-bright); flex-shrink: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .avatar-placeholder { font-family: 'Press Start 2P', monospace; font-size: 6px; color: var(--muted); }
+  .player-name { font-weight: 700; letter-spacing: 0.3px; color: var(--text); }
+
+  .region-badge { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; background: var(--bg3); border: 1px solid var(--border-bright); color: var(--muted); }
+
+  .tiers-cell { display: flex; flex-wrap: wrap; gap: 4px; justify-content: flex-end; }
+  .tier-badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-family: 'Press Start 2P', monospace; font-size: 7px; letter-spacing: 0.5px; }
+
+  .tier-Tier\ 1 { color: var(--t1); background: var(--t1-bg); border: 1px solid var(--t1-bd); }
+  .tier-Tier\ 2 { color: var(--t2); background: var(--t2-bg); border: 1px solid var(--t2-bd); }
+  .tier-Tier\ 3 { color: var(--t3); background: var(--t3-bg); border: 1px solid var(--t3-bd); }
+  .tier-Tier\ 4 { color: var(--t4); background: var(--t4-bg); border: 1px solid var(--t4-bd); }
+  .tier-Tier\ 5 { color: var(--t5); background: var(--t5-bg); border: 1px solid var(--t5-bd); }
+
+  .empty-row td { text-align: center; color: var(--muted); padding: 2.5rem; font-size: 13px; }
+
+  /* PAGINATION */
+  .pagination { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 1.25rem; }
+  .page-btn { background: var(--bg3); border: 1px solid var(--border-bright); border-radius: 5px; color: var(--muted); font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 700; padding: 5px 11px; cursor: pointer; transition: all 0.15s; }
+  .page-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .page-btn.active { background: var(--accent-dim); border-color: rgba(74,222,128,0.4); color: var(--accent); }
+  .page-btn:disabled { opacity: 0.3; cursor: default; }
+
+  /* SIDEBAR */
+  .sidebar { display: flex; flex-direction: column; gap: 1rem; }
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; }
+  .card-title { font-family: 'Press Start 2P', monospace; font-size: 8px; letter-spacing: 1px; color: var(--muted); margin-bottom: 1rem; }
+  .tier-legend { display: flex; flex-direction: column; gap: 7px; }
+  .legend-row { display: flex; align-items: center; gap: 8px; }
+  .legend-desc { font-size: 13px; color: var(--muted); font-weight: 500; }
+
+  footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 12px; border-top: 1px solid var(--border); margin-top: 2rem; }
+
+  @media (max-width: 768px) {
+    main { grid-template-columns: 1fr; }
+    .sidebar { order: -1; }
+    .search-box { width: 140px; }
+  }
+  @media (max-width: 480px) {
+    header { padding: 0 1rem; }
+    main { padding: 1rem; }
+    .tab-btn { padding: 8px 10px; font-size: 11px; }
+    .mode-icon { width: 30px; height: 30px; }
+    .mode-icon svg { width: 14px; height: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="#" class="site-logo">★ OF TIERS</a>
+    <nav class="header-nav">
+      <a href="#">Home</a>
+      <a href="#" class="active">Rankings</a>
+      <a href="https://discord.gg/Sv3GkukX9Q" target="_blank">Discord</a>
+    </nav>
+  </div>
+</header>
+
+<div class="tabs-bar">
+  <div class="tabs-inner" id="tabs">
+
+    <button class="tab-btn active" data-cat="overall">
+      <span class="mode-icon mi-overall"><svg viewBox="0 0 24 24"><path d="M12 2L9.5 8.5H3l5.5 4-2 6.5L12 15l5.5 3.5-2-6.5L21 8.5h-6.5z"/></svg></span>
+      Overall
+    </button>
+
+    <button class="tab-btn" data-cat="ltm">
+      <span class="mode-icon mi-ltm"><svg viewBox="0 0 24 24"><path d="M5 3L3 8l4 3-1.5 4L8 13l1.5 2L9 11l3-2-2.5-1zm14 0l-2.5 5L19 11l-3-2-.5 4 1.5-2 2.5 2L18 8l4-3zM8 12v2h8v-2zm-1 4v2h10v-2z"/></svg></span>
+      LTMs
+    </button>
+
+    <button class="tab-btn" data-cat="vanilla">
+      <span class="mode-icon mi-vanilla"><svg viewBox="0 0 24 24"><path d="M20.7 3.3a1 1 0 0 0-1.4 0L15 7.6l-1.3-1.3-1.4 1.4 1.3 1.3-8.9 8.9A2 2 0 0 0 4 19v1h1a2 2 0 0 0 1.4-.6l8.9-8.9 1.3 1.3 1.4-1.4-1.3-1.3 4.3-4.3a1 1 0 0 0 0-1.5z"/></svg></span>
+      Vanilla
+    </button>
+
+    <button class="tab-btn" data-cat="uhc">
+      <span class="mode-icon mi-uhc"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54z"/></svg></span>
+      UHC
+    </button>
+
+    <button class="tab-btn" data-cat="pot">
+      <span class="mode-icon mi-pot"><svg viewBox="0 0 24 24"><path d="M9 2v2H7v2h2v1.1A7 7 0 0 0 5 14a7 7 0 0 0 14 0 7 7 0 0 0-4-6.28V6h2V4h-2V2zm3 6a5 5 0 0 1 5 5H7a5 5 0 0 1 5-5zm-1 2v2h-2v2h2v2h2v-2h2v-2h-2v-2z"/></svg></span>
+      Pot
+    </button>
+
+    <button class="tab-btn" data-cat="nethop">
+      <span class="mode-icon mi-nethop"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5h-2v-9h2v9zm0-11h-2V3.5h2V5.5z"/></svg></span>
+      NethOP
+    </button>
+
+    <button class="tab-btn" data-cat="smp">
+      <span class="mode-icon mi-smp"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93V18h2v1.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93V6h-2V4.07C7.06 4.56 4 7.92 4 12s3.06 7.44 7 7.93zm2-15.86V6h2V4.07C18.94 4.56 22 7.92 22 12s-3.06 7.44-7 7.93V18h2v1.93c3.94-.49 7-3.85 7-7.93s-3.06-7.44-7-7.93z"/></svg></span>
+      SMP
+    </button>
+
+    <button class="tab-btn" data-cat="sword">
+      <span class="mode-icon mi-sword"><svg viewBox="0 0 24 24"><path d="M6.92 4L4 6.92l5.06 5.06-1.41 1.41-.71-.71-1.41 1.41 3.54 3.54 1.41-1.41-.71-.71 1.41-1.41.71.71 1.41-1.41L20 20l1-3-3-1-5.08-5.08L20 4h-4l-4 4zM4 20l4-2-2-2z"/></svg></span>
+      Sword
+    </button>
+
+    <button class="tab-btn" data-cat="axe">
+      <span class="mode-icon mi-axe"><svg viewBox="0 0 24 24"><path d="M13.5 3C10.46 3 8 5.46 8 8.5c0 .53.08 1.04.21 1.53L3 15.25V21h5.75l5.22-5.21c.49.13 1 .21 1.53.21C18.54 16 21 13.54 21 10.5S18.54 5 15.5 5c-.52 0-1.02.07-1.5.19V3zm0 2c.5 0 1 .07 1.5.21V8h2.79c.14.5.21 1 .21 1.5 0 2.49-2.01 4.5-4.5 4.5S8.5 11.99 8.5 9.5 10.51 5 13 5z"/></svg></span>
+      Axe
+    </button>
+
+    <button class="tab-btn" data-cat="mace">
+      <span class="mode-icon mi-mace"><svg viewBox="0 0 24 24"><path d="M11 2v4H9v2h2v1H5v2h6v1H4v2h7v1H3v2h8v1h2V8h2V6h-2V2zm2 4h1v12h-1z"/></svg></span>
+      Mace
+    </button>
+
+    <button class="tab-btn" data-cat="diamondsmp">
+      <span class="mode-icon mi-dsmp"><svg viewBox="0 0 24 24"><path d="M6 2L0 9l12 13L24 9 18 2zm1.4 2h3.1L9 7H5.5zm3.6 0h3l1 3H10zm5 0h3.1L20.5 7H17zm-9.4 4h3.8L8 14.5zm5 0h3.8l-1.9 6.5zm-9.1 0H6.5L12 17.5zm13 0h1.5L12 17.5z"/></svg></span>
+      Diamond SMP
+    </button>
+
+    <button class="tab-btn" data-cat="cart">
+      <span class="mode-icon mi-cart"><svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63H19c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 23.45 5H5.21l-.94-2zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg></span>
+      Cart
+    </button>
+
+  </div>
+</div>
+
+<main>
+  <div class="rankings-wrap">
+    <div class="section-header">
+      <span class="section-title" id="cat-label">Overall Rankings</span>
+      <input class="search-box" type="text" id="search" placeholder="Search player…">
+    </div>
+    <table id="rankings-table">
+      <thead>
+        <tr>
+          <th style="width:48px">#</th>
+          <th>Player</th>
+          <th>Region</th>
+          <th class="right">Tiers</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+    <div class="pagination" id="pagination"></div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="card">
+      <div class="card-title">Tiers</div>
+      <div class="tier-legend">
+        <div class="legend-row"><span class="tier-badge tier-Tier 1">Tier 1</span><span class="legend-desc">Best players</span></div>
+        <div class="legend-row"><span class="tier-badge tier-Tier 2">Tier 2</span><span class="legend-desc">High level</span></div>
+        <div class="legend-row"><span class="tier-badge tier-Tier 3">Tier 3</span><span class="legend-desc">Mid level</span></div>
+        <div class="legend-row"><span class="tier-badge tier-Tier 4">Tier 4</span><span class="legend-desc">Developing</span></div>
+        <div class="legend-row"><span class="tier-badge tier-Tier 5">Tier 5</span><span class="legend-desc">Entry level</span></div>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<footer>Copyrights © OF Tiers 2025</footer>
+
+<script>
+const TIERS = ['Tier 1','Tier 2','Tier 3','Tier 4','Tier 5'];
+const REGIONS = ['NA','AU','EU','AS'];
+const MODES = ['overall','ltm','vanilla','uhc','pot','nethop','smp','sword','axe','mace','diamondsmp','cart'];
+const LABELS = {
+  overall:'Overall Rankings', ltm:'LTMs Rankings', vanilla:'Vanilla Rankings',
+  uhc:'UHC Rankings', pot:'Pot Rankings', nethop:'NethOP Rankings',
+  smp:'SMP Rankings', sword:'Sword Rankings', axe:'Axe Rankings',
+  mace:'Mace Rankings', diamondsmp:'Diamond SMP Rankings', cart:'Cart Rankings'
+};
+const NAMES = [];
+
+function generatePlayers(mode) {
+  const mo = MODES.indexOf(mode);
+  return NAMES
+    .map((name, i) => ({ rank: i+1, name, region: REGIONS[(i+mo)%REGIONS.length], mainTier: TIERS[Math.abs(i*7+mo*13)%TIERS.length] }))
+    .sort((a,b) => TIERS.indexOf(a.mainTier) - TIERS.indexOf(b.mainTier))
+    .map((p,i) => ({...p, rank: i+1}));
+}
+
+let currentCat = 'overall', currentPage = 1, filtered = [];
+const PER_PAGE = 20;
+
+function renderTable(players, page) {
+  const body = document.getElementById('table-body');
+  const slice = players.slice((page-1)*PER_PAGE, page*PER_PAGE);
+  if (!slice.length) { body.innerHTML = '<tr class="empty-row"><td colspan="4">No players ranked yet.</td></tr>'; return; }
+  body.innerHTML = slice.map(p => {
+    const topClass = p.rank <= 3 ? ' top' : '';
+    const initials = p.name.replace(/[^A-Za-z]/g,'').slice(0,2).toUpperCase() || '??';
+    const label = p.mainTier.replace(/([A-Z]+)(\d)/,'$1 $2');
+    return `<tr>
+      <td><span class="rank-num${topClass}">${p.rank}</span></td>
+      <td><div class="player-cell">
+        <div class="player-avatar"><img src="https://crafatar.com/avatars/${p.name}?size=28&overlay" alt="${p.name}" width="28" height="28" style="border-radius:4px;display:block;" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'avatar-placeholder\'>${initials}</span>'"></div>
+        <span class="player-name">${p.name}</span>
+      </div></td>
+      <td><span class="region-badge">${p.region}</span></td>
+      <td><div class="tiers-cell"><span class="tier-badge tier-${p.mainTier}">${label}</span></div></td>
+    </tr>`;
+  }).join('');
+}
+
+function renderPagination(total, page) {
+  const pages = Math.ceil(total/PER_PAGE);
+  const el = document.getElementById('pagination');
+  if (pages <= 1) { el.innerHTML = ''; return; }
+  let html = `<button class="page-btn" onclick="goPage(${page-1})" ${page===1?'disabled':''}>‹</button>`;
+  for (let i=1;i<=pages;i++) {
+    if (i===1||i===pages||Math.abs(i-page)<=1)
+      html += `<button class="page-btn${i===page?' active':''}" onclick="goPage(${i})">${i}</button>`;
+    else if (Math.abs(i-page)===2)
+      html += `<span style="color:var(--muted);font-size:12px;padding:0 2px">…</span>`;
+  }
+  html += `<button class="page-btn" onclick="goPage(${page+1})" ${page===pages?'disabled':''}>›</button>`;
+  el.innerHTML = html;
+}
+
+function goPage(p) { currentPage=p; renderTable(filtered,currentPage); renderPagination(filtered.length,currentPage); window.scrollTo({top:0,behavior:'smooth'}); }
+
+function loadCategory(cat) {
+  currentCat=cat; currentPage=1;
+  document.getElementById('cat-label').textContent = LABELS[cat];
+  document.getElementById('search').value = '';
+  filtered = generatePlayers(cat);
+  renderTable(filtered,1); renderPagination(filtered.length,1);
+}
+
+document.getElementById('tabs').addEventListener('click', e => {
+  const btn = e.target.closest('.tab-btn');
+  if (!btn) return;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  loadCategory(btn.dataset.cat);
+});
+
+document.getElementById('search').addEventListener('input', e => {
+  const q = e.target.value.toLowerCase().trim();
+  filtered = q ? generatePlayers(currentCat).filter(p => p.name.toLowerCase().includes(q)) : generatePlayers(currentCat);
+  currentPage=1; renderTable(filtered,1); renderPagination(filtered.length,1);
+});
+
+loadCategory('overall');
+</script>
+</body>
+</html>
