@@ -47,6 +47,12 @@
       "region": "EU",
       "tiers": {},
       "added": "2026-04-20T07:18:30.204510"
+    },
+    "master_microwave": {
+      "name": "Master_Microwave",
+      "region": "NA",
+      "tiers": {},
+      "added": "2026-04-20T07:18:52.199429"
     }
   }
 }
