@@ -107,6 +107,12 @@
       "region": "EU",
       "tiers": {},
       "added": "2026-04-20T07:22:29.329627"
+    },
+    "last_awakened": {
+      "name": "Last_Awakened",
+      "region": "NA",
+      "tiers": {},
+      "added": "2026-04-20T07:22:54.354222"
     }
   }
 }
