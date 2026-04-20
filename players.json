@@ -65,6 +65,12 @@
       "region": "EU",
       "tiers": {},
       "added": "2026-04-20T07:19:53.249163"
+    },
+    "lxveraiden": {
+      "name": "LxveRaiden",
+      "region": "NA",
+      "tiers": {},
+      "added": "2026-04-20T07:20:09.464213"
     }
   }
 }
