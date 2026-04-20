@@ -3,7 +3,9 @@
     "v0rtality": {
       "name": "V0RTALITY",
       "region": "AU",
-      "tiers": {},
+      "tiers": {
+        "sword": "Tier 4"
+      },
       "added": "2026-04-20T05:24:27.529752"
     }
   }
