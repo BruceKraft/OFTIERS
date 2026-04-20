@@ -281,7 +281,6 @@
 
 <script>
 const TIERS = ['Tier 1','Tier 2','Tier 3','Tier 4','Tier 5'];
-const REGIONS = ['NA','AU','EU','AS'];
 const MODES = ['overall','ltm','vanilla','uhc','pot','nethop','smp','sword','axe','mace','diamondsmp','cart'];
 const LABELS = {
   overall:'Overall Rankings', ltm:'LTMs Rankings', vanilla:'Vanilla Rankings',
@@ -289,62 +288,86 @@ const LABELS = {
   smp:'SMP Rankings', sword:'Sword Rankings', axe:'Axe Rankings',
   mace:'Mace Rankings', diamondsmp:'Diamond SMP Rankings', cart:'Cart Rankings'
 };
-const NAMES = [];
 
-function generatePlayers(mode) {
-  const mo = MODES.indexOf(mode);
-  return NAMES
-    .map((name, i) => ({ rank: i+1, name, region: REGIONS[(i+mo)%REGIONS.length], mainTier: TIERS[Math.abs(i*7+mo*13)%TIERS.length] }))
-    .sort((a,b) => TIERS.indexOf(a.mainTier) - TIERS.indexOf(b.mainTier))
-    .map((p,i) => ({...p, rank: i+1}));
-}
-
+const DATA_URL = 'https://raw.githubusercontent.com/BruceKraft/OFTiers/main/players.json';
+let allPlayers = [];
 let currentCat = 'overall', currentPage = 1, filtered = [];
 const PER_PAGE = 20;
 
+async function fetchPlayers() {
+  try {
+    const res = await fetch(DATA_URL + '?t=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    allPlayers = Object.values(data.players || {});
+    console.log('Loaded', allPlayers.length, 'players from GitHub');
+  } catch(e) {
+    console.error('Failed to load players:', e);
+  }
+}
+
+function getPlayersForMode(mode) {
+  const ranked = allPlayers
+    .filter(p => p.tiers && p.tiers[mode])
+    .sort((a, b) => TIERS.indexOf(a.tiers[mode]) - TIERS.indexOf(b.tiers[mode]))
+    .map((p, i) => ({ rank: i + 1, name: p.name, region: p.region, mainTier: p.tiers[mode] }));
+  const unranked = allPlayers
+    .filter(p => !p.tiers || !p.tiers[mode])
+    .map(p => ({ rank: null, name: p.name, region: p.region, mainTier: null }));
+  return [...ranked, ...unranked];
+}
+
 function renderTable(players, page) {
   const body = document.getElementById('table-body');
-  const slice = players.slice((page-1)*PER_PAGE, page*PER_PAGE);
+  const slice = players.slice((page - 1) * PER_PAGE, page * PER_PAGE);
   if (!slice.length) { body.innerHTML = '<tr class="empty-row"><td colspan="4">No players ranked yet.</td></tr>'; return; }
   body.innerHTML = slice.map(p => {
-    const topClass = p.rank <= 3 ? ' top' : '';
-    const initials = p.name.replace(/[^A-Za-z]/g,'').slice(0,2).toUpperCase() || '??';
-    const label = p.mainTier.replace(/([A-Z]+)(\d)/,'$1 $2');
+    const topClass = p.rank && p.rank <= 3 ? ' top' : '';
+    const rankDisplay = p.rank || '-';
+    const initials = p.name.replace(/[^A-Za-z]/g, '').slice(0, 2).toUpperCase() || '??';
+    const tierBadge = p.mainTier
+      ? `<span class="tier-badge tier-${p.mainTier}">${p.mainTier}</span>`
+      : `<span style="color:var(--muted);font-size:13px">unranked</span>`;
     return `<tr>
-      <td><span class="rank-num${topClass}">${p.rank}</span></td>
+      <td><span class="rank-num${topClass}">${rankDisplay}</span></td>
       <td><div class="player-cell">
-        <div class="player-avatar"><img src="https://crafatar.com/avatars/${p.name}?size=28&overlay" alt="${p.name}" width="28" height="28" style="border-radius:4px;display:block;" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'avatar-placeholder\'>${initials}</span>'"></div>
+        <div class="player-avatar"><img src="https://crafatar.com/avatars/${p.name}?size=28&overlay" alt="${p.name}" width="28" height="28" style="border-radius:4px;display:block;" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\\'avatar-placeholder\\'>${initials}</span>'"></div>
         <span class="player-name">${p.name}</span>
       </div></td>
       <td><span class="region-badge">${p.region}</span></td>
-      <td><div class="tiers-cell"><span class="tier-badge tier-${p.mainTier}">${label}</span></div></td>
+      <td><div class="tiers-cell">${tierBadge}</div></td>
     </tr>`;
   }).join('');
 }
 
 function renderPagination(total, page) {
-  const pages = Math.ceil(total/PER_PAGE);
+  const pages = Math.ceil(total / PER_PAGE);
   const el = document.getElementById('pagination');
   if (pages <= 1) { el.innerHTML = ''; return; }
   let html = `<button class="page-btn" onclick="goPage(${page-1})" ${page===1?'disabled':''}>‹</button>`;
-  for (let i=1;i<=pages;i++) {
-    if (i===1||i===pages||Math.abs(i-page)<=1)
+  for (let i = 1; i <= pages; i++) {
+    if (i === 1 || i === pages || Math.abs(i - page) <= 1)
       html += `<button class="page-btn${i===page?' active':''}" onclick="goPage(${i})">${i}</button>`;
-    else if (Math.abs(i-page)===2)
+    else if (Math.abs(i - page) === 2)
       html += `<span style="color:var(--muted);font-size:12px;padding:0 2px">…</span>`;
   }
   html += `<button class="page-btn" onclick="goPage(${page+1})" ${page===pages?'disabled':''}>›</button>`;
   el.innerHTML = html;
 }
 
-function goPage(p) { currentPage=p; renderTable(filtered,currentPage); renderPagination(filtered.length,currentPage); window.scrollTo({top:0,behavior:'smooth'}); }
+function goPage(p) { currentPage = p; renderTable(filtered, currentPage); renderPagination(filtered.length, currentPage); window.scrollTo({top:0,behavior:'smooth'}); }
 
 function loadCategory(cat) {
-  currentCat=cat; currentPage=1;
+  currentCat = cat; currentPage = 1;
   document.getElementById('cat-label').textContent = LABELS[cat];
   document.getElementById('search').value = '';
-  filtered = generatePlayers(cat);
-  renderTable(filtered,1); renderPagination(filtered.length,1);
+  filtered = getPlayersForMode(cat);
+  renderTable(filtered, 1); renderPagination(filtered.length, 1);
+}
+
+async function refresh() {
+  await fetchPlayers();
+  loadCategory(currentCat);
 }
 
 document.getElementById('tabs').addEventListener('click', e => {
@@ -357,11 +380,13 @@ document.getElementById('tabs').addEventListener('click', e => {
 
 document.getElementById('search').addEventListener('input', e => {
   const q = e.target.value.toLowerCase().trim();
-  filtered = q ? generatePlayers(currentCat).filter(p => p.name.toLowerCase().includes(q)) : generatePlayers(currentCat);
-  currentPage=1; renderTable(filtered,1); renderPagination(filtered.length,1);
+  filtered = q ? getPlayersForMode(currentCat).filter(p => p.name.toLowerCase().includes(q)) : getPlayersForMode(currentCat);
+  currentPage = 1; renderTable(filtered, 1); renderPagination(filtered.length, 1);
 });
 
-loadCategory('overall');
+// Initial load then refresh every 15 seconds
+refresh();
+setInterval(refresh, 15000);
 </script>
 </body>
 </html>
