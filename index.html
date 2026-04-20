@@ -10,42 +10,34 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #0b0c10;
-    --bg2: #111318;
-    --bg3: #181b22;
-    --border: rgba(255,255,255,0.07);
-    --border-bright: rgba(255,255,255,0.13);
-    --text: #e8eaf0;
-    --muted: #7a7f91;
+    --bg:  #13151c;
+    --bg2: #1a1d26;
+    --bg3: #222632;
+    --border: rgba(255,255,255,0.08);
+    --border-bright: rgba(255,255,255,0.15);
+    --text: #eceef5;
+    --muted: #7a7f96;
     --accent: #4ade80;
     --accent-dim: rgba(74,222,128,0.12);
 
-    --t1: #ffd700; --t1-bg: rgba(255,215,0,0.13);   --t1-bd: rgba(255,215,0,0.3);
-    --t2: #f5820a; --t2-bg: rgba(245,130,10,0.13);  --t2-bd: rgba(245,130,10,0.3);
-    --t3: #e05252; --t3-bg: rgba(224,82,82,0.13);   --t3-bd: rgba(224,82,82,0.3);
-    --t4: #9b7bf7; --t4-bg: rgba(155,123,247,0.13); --t4-bd: rgba(155,123,247,0.3);
-    --t5: #6a6a7e; --t5-bg: rgba(106,106,126,0.13); --t5-bd: rgba(106,106,126,0.3);
+    --gold-bg:   rgba(255,215,0,0.10);   --gold-bd:   rgba(255,215,0,0.28);
+    --silver-bg: rgba(192,200,216,0.08); --silver-bd: rgba(192,200,216,0.22);
+    --bronze-bg: rgba(205,127,50,0.10);  --bronze-bd: rgba(205,127,50,0.26);
+
+    --t1: #ffd700; --t1-bg: rgba(255,215,0,0.13);   --t1-bd: rgba(255,215,0,0.32);
+    --t2: #f5820a; --t2-bg: rgba(245,130,10,0.13);  --t2-bd: rgba(245,130,10,0.32);
+    --t3: #e05252; --t3-bg: rgba(224,82,82,0.13);   --t3-bd: rgba(224,82,82,0.32);
+    --t4: #9b7bf7; --t4-bg: rgba(155,123,247,0.13); --t4-bd: rgba(155,123,247,0.32);
+    --t5: #6a6a8e; --t5-bg: rgba(106,106,142,0.13); --t5-bd: rgba(106,106,142,0.32);
   }
 
   html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg); color: var(--text);
-    font-family: 'Rajdhani', sans-serif; font-size: 16px;
-    min-height: 100vh; line-height: 1.5;
-  }
-  body::before {
-    content: ''; position: fixed; inset: 0;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
-    pointer-events: none; z-index: 999;
-  }
+  body { background: var(--bg); color: var(--text); font-family: 'Rajdhani', sans-serif; font-size: 16px; min-height: 100vh; line-height: 1.5; }
 
   /* HEADER */
-  header { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 0 2rem; position: sticky; top: 0; z-index: 50; }
-  .header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 2rem; height: 56px; }
-  .site-logo {
-    font-family: 'Press Start 2P', monospace; font-size: 11px; color: var(--accent);
-    letter-spacing: 1px; white-space: nowrap; text-shadow: 0 0 20px rgba(74,222,128,0.4); text-decoration: none;
-  }
+  header { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 0 2rem; position: sticky; top: 0; z-index: 100; }
+  .header-inner { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; gap: 2rem; height: 60px; }
+  .site-logo { font-family: 'Press Start 2P', monospace; font-size: 11px; color: var(--accent); letter-spacing: 1px; white-space: nowrap; text-shadow: 0 0 20px rgba(74,222,128,0.4); text-decoration: none; }
   .header-nav { display: flex; align-items: center; gap: 1.5rem; margin-left: auto; }
   .header-nav a { color: var(--muted); font-size: 14px; font-weight: 600; text-decoration: none; letter-spacing: 0.5px; transition: color 0.15s; }
   .header-nav a:hover { color: var(--text); }
@@ -53,124 +45,162 @@
 
   /* TABS */
   .tabs-bar { background: var(--bg2); border-bottom: 1px solid var(--border); }
-  .tabs-inner { max-width: 1100px; margin: 0 auto; display: flex; overflow-x: auto; gap: 0; scrollbar-width: none; }
+  .tabs-inner { max-width: 1300px; margin: 0 auto; display: flex; overflow-x: auto; scrollbar-width: none; }
   .tabs-inner::-webkit-scrollbar { display: none; }
-  .tab-btn {
-    display: flex; flex-direction: column; align-items: center; gap: 5px;
-    padding: 10px 16px;
-    font-family: 'Rajdhani', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.4px;
-    color: var(--muted); background: none; border: none;
-    border-bottom: 2px solid transparent;
-    cursor: pointer; white-space: nowrap; transition: color 0.15s, border-color 0.15s;
-  }
+  .tab-btn { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 10px 18px; font-family: 'Rajdhani', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.4px; color: var(--muted); background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
   .tab-btn:hover { color: var(--text); }
   .tab-btn.active { color: var(--text); border-bottom-color: var(--accent); }
-
-  .mode-icon {
-    width: 36px; height: 36px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    border: 1.5px solid rgba(255,255,255,0.12);
-    transition: border-color 0.15s, opacity 0.15s;
-    opacity: 0.6; flex-shrink: 0;
-  }
+  .mode-icon { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1.5px solid rgba(255,255,255,0.12); transition: border-color 0.15s, opacity 0.15s; opacity: 0.6; flex-shrink: 0; }
   .tab-btn:hover .mode-icon { opacity: 0.9; }
-  .tab-btn.active .mode-icon { opacity: 1; border-color: rgba(255,255,255,0.28); }
+  .tab-btn.active .mode-icon { opacity: 1; border-color: rgba(255,255,255,0.3); }
   .mode-icon svg { width: 18px; height: 18px; display: block; }
 
-  .mi-overall  { background: #2a2000; } .mi-overall  svg { fill: #ffc130; }
-  .mi-ltm      { background: #1a1a2a; } .mi-ltm      svg { fill: #9090c0; }
-  .mi-vanilla  { background: #1a2520; } .mi-vanilla  svg { fill: #60c090; }
-  .mi-uhc      { background: #2a1515; } .mi-uhc      svg { fill: #e05050; }
-  .mi-pot      { background: #201520; } .mi-pot      svg { fill: #c070d0; }
-  .mi-nethop   { background: #251008; } .mi-nethop   svg { fill: #e07030; }
-  .mi-smp      { background: #102510; } .mi-smp      svg { fill: #40c040; }
-  .mi-sword    { background: #101825; } .mi-sword    svg { fill: #4090d0; }
-  .mi-axe      { background: #18100a; } .mi-axe      svg { fill: #c07840; }
-  .mi-mace     { background: #151520; } .mi-mace     svg { fill: #8080c0; }
-  .mi-dsmp     { background: #0a1830; } .mi-dsmp     svg { fill: #60b0ff; }
-  .mi-cart     { background: #201808; } .mi-cart     svg { fill: #d0a030; }
+  .mi-overall { background:#2a2000; } .mi-overall svg { fill:#ffc130; }
+  .mi-vanilla { background:#1a2520; } .mi-vanilla svg { fill:#60c090; }
+  .mi-uhc     { background:#2a1515; } .mi-uhc     svg { fill:#e05050; }
+  .mi-pot     { background:#201520; } .mi-pot     svg { fill:#c070d0; }
+  .mi-nethop  { background:#251008; } .mi-nethop  svg { fill:#e07030; }
+  .mi-smp     { background:#102510; } .mi-smp     svg { fill:#40c040; }
+  .mi-sword   { background:#101825; } .mi-sword   svg { fill:#4090d0; }
+  .mi-axe     { background:#18100a; } .mi-axe     svg { fill:#c07840; }
+  .mi-mace    { background:#151520; } .mi-mace    svg { fill:#8080c0; }
+  .mi-dsmp    { background:#0a1830; } .mi-dsmp    svg { fill:#60b0ff; }
+  .mi-cart    { background:#201808; } .mi-cart    svg { fill:#d0a030; }
 
   /* MAIN */
-  main { max-width: 1100px; margin: 0 auto; padding: 2rem; display: grid; grid-template-columns: 1fr 220px; gap: 1.5rem; align-items: start; }
+  main { max-width: 1300px; margin: 0 auto; padding: 2rem; display: grid; grid-template-columns: 1fr 250px; gap: 1.5rem; align-items: start; }
 
   /* TABLE */
   .rankings-wrap { min-width: 0; }
   .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
   .section-title { font-family: 'Press Start 2P', monospace; font-size: 9px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
-  .search-box {
-    background: var(--bg3); border: 1px solid var(--border-bright); border-radius: 6px;
-    padding: 6px 12px; color: var(--text); font-family: 'Rajdhani', sans-serif;
-    font-size: 14px; width: 200px; outline: none; transition: border-color 0.15s;
-  }
+  .search-box { background: var(--bg2); border: 1px solid var(--border-bright); border-radius: 8px; padding: 8px 14px; color: var(--text); font-family: 'Rajdhani', sans-serif; font-size: 15px; width: 220px; outline: none; transition: border-color 0.15s; }
   .search-box:focus { border-color: var(--accent); }
   .search-box::placeholder { color: var(--muted); }
 
   table { width: 100%; border-collapse: collapse; font-size: 15px; }
-  thead th { text-align: left; padding: 8px 12px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--border); }
+  thead th { text-align: left; padding: 10px 14px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--border); }
   thead th.right { text-align: right; }
-  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
-  tbody tr:hover { background: rgba(255,255,255,0.03); }
-  tbody td { padding: 10px 12px; vertical-align: middle; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.12s; cursor: pointer; }
+  tbody tr:hover { background: rgba(255,255,255,0.04); }
+  tbody td { padding: 13px 14px; vertical-align: middle; }
 
-  .rank-num { font-family: 'Press Start 2P', monospace; font-size: 9px; color: var(--muted); min-width: 36px; display: inline-block; text-align: right; }
-  .rank-num.top { color: var(--accent); }
+  tr.rank-gold   { background: var(--gold-bg)  !important; border-left: 3px solid rgba(255,215,0,0.5); }
+  tr.rank-silver { background: var(--silver-bg) !important; border-left: 3px solid rgba(192,200,216,0.4); }
+  tr.rank-bronze { background: var(--bronze-bg) !important; border-left: 3px solid rgba(205,127,50,0.5); }
+  tr.rank-gold:hover   { background: rgba(255,215,0,0.16)    !important; }
+  tr.rank-silver:hover { background: rgba(192,200,216,0.13)  !important; }
+  tr.rank-bronze:hover { background: rgba(205,127,50,0.16)   !important; }
 
-  .player-cell { display: flex; align-items: center; gap: 10px; }
-  .player-avatar { width: 28px; height: 28px; border-radius: 4px; background: var(--bg3); border: 1px solid var(--border-bright); flex-shrink: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .rank-num   { font-family: 'Press Start 2P', monospace; font-size: 9px; color: var(--muted); min-width: 36px; display: inline-block; text-align: center; }
+  .rank-medal { font-size: 22px; display: inline-block; width: 36px; text-align: center; }
+
+  .player-cell { display: flex; align-items: center; gap: 12px; }
+  .player-avatar { width: 38px; height: 38px; border-radius: 6px; background: var(--bg2); border: 1px solid var(--border-bright); flex-shrink: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
   .avatar-placeholder { font-family: 'Press Start 2P', monospace; font-size: 6px; color: var(--muted); }
-  .player-name { font-weight: 700; letter-spacing: 0.3px; color: var(--text); }
+  .player-name { font-weight: 700; font-size: 16px; letter-spacing: 0.3px; color: var(--text); }
 
-  .region-badge { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; background: var(--bg3); border: 1px solid var(--border-bright); color: var(--muted); }
+  .region-badge { display: inline-block; padding: 3px 9px; border-radius: 5px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; background: var(--bg3); border: 1px solid var(--border-bright); color: var(--muted); }
 
-  .tiers-cell { display: flex; flex-wrap: wrap; gap: 4px; justify-content: flex-end; }
-  .tier-badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-family: 'Press Start 2P', monospace; font-size: 7px; letter-spacing: 0.5px; }
-
+  .tiers-cell { display: flex; flex-wrap: wrap; gap: 4px; justify-content: flex-end; align-items: center; }
+  .tier-badge { display: inline-block; padding: 4px 9px; border-radius: 5px; font-family: 'Press Start 2P', monospace; font-size: 7px; letter-spacing: 0.5px; }
   .tier-Tier\ 1 { color: var(--t1); background: var(--t1-bg); border: 1px solid var(--t1-bd); }
   .tier-Tier\ 2 { color: var(--t2); background: var(--t2-bg); border: 1px solid var(--t2-bd); }
   .tier-Tier\ 3 { color: var(--t3); background: var(--t3-bg); border: 1px solid var(--t3-bd); }
   .tier-Tier\ 4 { color: var(--t4); background: var(--t4-bg); border: 1px solid var(--t4-bd); }
   .tier-Tier\ 5 { color: var(--t5); background: var(--t5-bg); border: 1px solid var(--t5-bd); }
+  .points-label { font-size: 14px; color: var(--text); font-weight: 700; }
 
-  .empty-row td { text-align: center; color: var(--muted); padding: 2.5rem; font-size: 13px; }
+  .empty-row td { text-align: center; color: var(--muted); padding: 3rem; font-size: 13px; }
 
   /* PAGINATION */
-  .pagination { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 1.25rem; }
-  .page-btn { background: var(--bg3); border: 1px solid var(--border-bright); border-radius: 5px; color: var(--muted); font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 700; padding: 5px 11px; cursor: pointer; transition: all 0.15s; }
+  .pagination { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 1.5rem; }
+  .page-btn { background: var(--bg2); border: 1px solid var(--border-bright); border-radius: 6px; color: var(--muted); font-family: 'Rajdhani', sans-serif; font-size: 14px; font-weight: 700; padding: 6px 13px; cursor: pointer; transition: all 0.15s; }
   .page-btn:hover { border-color: var(--accent); color: var(--accent); }
   .page-btn.active { background: var(--accent-dim); border-color: rgba(74,222,128,0.4); color: var(--accent); }
   .page-btn:disabled { opacity: 0.3; cursor: default; }
 
   /* SIDEBAR */
-  .sidebar { display: flex; flex-direction: column; gap: 1rem; }
-  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; }
+  .sidebar { display: flex; flex-direction: column; gap: 1rem; position: sticky; top: 80px; }
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 1.4rem; }
   .card-title { font-family: 'Press Start 2P', monospace; font-size: 8px; letter-spacing: 1px; color: var(--muted); margin-bottom: 1rem; }
-  .tier-legend { display: flex; flex-direction: column; gap: 7px; }
-  .legend-row { display: flex; align-items: center; gap: 8px; }
-  .legend-desc { font-size: 13px; color: var(--muted); font-weight: 500; }
+  .tier-legend { display: flex; flex-direction: column; gap: 8px; }
+  .legend-row { display: flex; align-items: center; gap: 10px; }
+  .legend-pts { margin-left: auto; font-size: 12px; color: var(--muted); font-weight: 700; }
+  .legend-desc { font-size: 13px; color: var(--muted); font-weight: 600; }
+
+  /* PROFILE MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.72); z-index: 200; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--bg2); border: 1px solid var(--border-bright); border-radius: 18px; padding: 2rem; width: 400px; max-width: 95vw; position: relative; animation: popIn 0.18s ease; }
+  @keyframes popIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .modal-close { position: absolute; top: 14px; right: 14px; background: rgba(255,255,255,0.08); border: none; border-radius: 50%; width: 34px; height: 34px; cursor: pointer; color: var(--muted); font-size: 20px; display: flex; align-items: center; justify-content: center; transition: background 0.15s; line-height: 1; }
+  .modal-close:hover { background: rgba(255,255,255,0.15); color: var(--text); }
+
+  .modal-avatar-wrap { text-align: center; margin-bottom: 1.1rem; }
+  .modal-avatar { width: 110px; height: 110px; border-radius: 50%; border: 3px solid var(--border-bright); display: block; margin: 0 auto 0.8rem; background: var(--bg); object-fit: cover; }
+  .modal-name { font-family: 'Press Start 2P', monospace; font-size: 13px; color: var(--text); text-align: center; margin-bottom: 0.5rem; }
+  .modal-rank-badge { display: block; width: fit-content; margin: 0 auto 0.8rem; padding: 4px 14px; border-radius: 20px; background: var(--accent-dim); border: 1px solid rgba(74,222,128,0.3); color: var(--accent); font-size: 13px; font-weight: 700; }
+  .modal-meta { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 1.3rem; flex-wrap: wrap; }
+  .modal-region { font-size: 13px; color: var(--muted); font-weight: 600; }
+  .modal-namemc { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 5px; background: var(--bg3); border: 1px solid var(--border-bright); color: var(--muted); font-size: 12px; font-weight: 700; text-decoration: none; transition: border-color 0.15s, color 0.15s; }
+  .modal-namemc:hover { border-color: var(--accent); color: var(--accent); }
+
+  .modal-section { margin-bottom: 1.1rem; }
+  .modal-section-title { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
+  .modal-position { background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 0.8rem 1rem; display: flex; align-items: center; gap: 0.75rem; }
+  .modal-pos-num { font-family: 'Press Start 2P', monospace; font-size: 16px; color: var(--text); }
+  .modal-pos-label { font-size: 13px; color: var(--muted); font-weight: 600; }
+  .modal-pos-pts { margin-left: auto; font-size: 14px; font-weight: 700; color: var(--accent); }
+
+  .modal-tiers-grid { display: flex; flex-direction: column; }
+  .modal-tier-row { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 1px solid var(--border); }
+  .modal-tier-row:last-child { border-bottom: none; }
+  .modal-tier-mode { font-size: 14px; color: var(--muted); font-weight: 600; flex: 1; }
 
   footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 12px; border-top: 1px solid var(--border); margin-top: 2rem; }
 
-  @media (max-width: 768px) {
-    main { grid-template-columns: 1fr; }
-    .sidebar { order: -1; }
-    .search-box { width: 140px; }
-  }
-  @media (max-width: 480px) {
-    header { padding: 0 1rem; }
-    main { padding: 1rem; }
-    .tab-btn { padding: 8px 10px; font-size: 11px; }
-    .mode-icon { width: 30px; height: 30px; }
-    .mode-icon svg { width: 14px; height: 14px; }
-  }
+  @media (max-width: 900px) { main { grid-template-columns: 1fr; } .sidebar { position: static; order: -1; } }
+  @media (max-width: 480px) { header { padding: 0 1rem; } main { padding: 1rem; } .search-box { width: 150px; } }
 </style>
 </head>
 <body>
+
+<!-- PROFILE MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModalBtn()">×</button>
+    <div class="modal-avatar-wrap">
+      <img class="modal-avatar" id="modal-avatar" src="" alt="">
+      <div class="modal-name" id="modal-name"></div>
+      <div class="modal-rank-badge" id="modal-rank-badge"></div>
+    </div>
+    <div class="modal-meta">
+      <span class="modal-region" id="modal-region"></span>
+      <a class="modal-namemc" id="modal-namemc" href="#" target="_blank">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        NameMC
+      </a>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Position</div>
+      <div class="modal-position">
+        <span class="modal-pos-num" id="modal-pos"></span>
+        <span class="modal-pos-label">Overall</span>
+        <span class="modal-pos-pts" id="modal-pts"></span>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Tiers</div>
+      <div class="modal-tiers-grid" id="modal-tiers"></div>
+    </div>
+  </div>
+</div>
 
 <header>
   <div class="header-inner">
     <a href="#" class="site-logo">★ OF TIERS</a>
     <nav class="header-nav">
-      <a href="#">Home</a>
       <a href="#" class="active">Rankings</a>
       <a href="https://discord.gg/Sv3GkukX9Q" target="_blank">Discord</a>
     </nav>
@@ -183,11 +213,6 @@
     <button class="tab-btn active" data-cat="overall">
       <span class="mode-icon mi-overall"><svg viewBox="0 0 24 24"><path d="M12 2L9.5 8.5H3l5.5 4-2 6.5L12 15l5.5 3.5-2-6.5L21 8.5h-6.5z"/></svg></span>
       Overall
-    </button>
-
-    <button class="tab-btn" data-cat="ltm">
-      <span class="mode-icon mi-ltm"><svg viewBox="0 0 24 24"><path d="M5 3L3 8l4 3-1.5 4L8 13l1.5 2L9 11l3-2-2.5-1zm14 0l-2.5 5L19 11l-3-2-.5 4 1.5-2 2.5 2L18 8l4-3zM8 12v2h8v-2zm-1 4v2h10v-2z"/></svg></span>
-      LTMs
     </button>
 
     <button class="tab-btn" data-cat="vanilla">
@@ -221,7 +246,7 @@
     </button>
 
     <button class="tab-btn" data-cat="axe">
-      <span class="mode-icon mi-axe"><svg viewBox="0 0 24 24"><path d="M13.5 3C10.46 3 8 5.46 8 8.5c0 .53.08 1.04.21 1.53L3 15.25V21h5.75l5.22-5.21c.49.13 1 .21 1.53.21C18.54 16 21 13.54 21 10.5S18.54 5 15.5 5c-.52 0-1.02.07-1.5.19V3zm0 2c.5 0 1 .07 1.5.21V8h2.79c.14.5.21 1 .21 1.5 0 2.49-2.01 4.5-4.5 4.5S8.5 11.99 8.5 9.5 10.51 5 13 5z"/></svg></span>
+      <span class="mode-icon mi-axe"><svg viewBox="0 0 24 24"><path d="M13.5 3C10.46 3 8 5.46 8 8.5c0 .53.08 1.04.21 1.53L3 15.25V21h5.75l5.22-5.21c.49.13 1 .21 1.53.21C18.54 16 21 13.54 21 10.5S18.54 5 15.5 5c-.52 0-1.02.07-1.5.19V3z"/></svg></span>
       Axe
     </button>
 
@@ -252,10 +277,10 @@
     <table id="rankings-table">
       <thead>
         <tr>
-          <th style="width:48px">#</th>
+          <th style="width:52px">#</th>
           <th>Player</th>
           <th>Region</th>
-          <th class="right">Tiers</th>
+          <th class="right" id="tier-col-header">Points</th>
         </tr>
       </thead>
       <tbody id="table-body"></tbody>
@@ -265,34 +290,52 @@
 
   <aside class="sidebar">
     <div class="card">
-      <div class="card-title">Tiers</div>
+      <div class="card-title">Tiers & Points</div>
       <div class="tier-legend">
-        <div class="legend-row"><span class="tier-badge tier-Tier 1">Tier 1</span><span class="legend-desc">Best players</span></div>
-        <div class="legend-row"><span class="tier-badge tier-Tier 2">Tier 2</span><span class="legend-desc">High level</span></div>
-        <div class="legend-row"><span class="tier-badge tier-Tier 3">Tier 3</span><span class="legend-desc">Mid level</span></div>
-        <div class="legend-row"><span class="tier-badge tier-Tier 4">Tier 4</span><span class="legend-desc">Developing</span></div>
-        <div class="legend-row"><span class="tier-badge tier-Tier 5">Tier 5</span><span class="legend-desc">Entry level</span></div>
+        <div class="legend-row"><span class="tier-badge tier-Tier 1">Tier 1</span><span class="legend-desc">Best</span><span class="legend-pts">60 pts</span></div>
+        <div class="legend-row"><span class="tier-badge tier-Tier 2">Tier 2</span><span class="legend-desc">High</span><span class="legend-pts">30 pts</span></div>
+        <div class="legend-row"><span class="tier-badge tier-Tier 3">Tier 3</span><span class="legend-desc">Mid</span><span class="legend-pts">15 pts</span></div>
+        <div class="legend-row"><span class="tier-badge tier-Tier 4">Tier 4</span><span class="legend-desc">Dev</span><span class="legend-pts">5 pts</span></div>
+        <div class="legend-row"><span class="tier-badge tier-Tier 5">Tier 5</span><span class="legend-desc">Entry</span><span class="legend-pts">1 pt</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Rank Titles</div>
+      <div class="tier-legend">
+        <div class="legend-row"><span class="legend-desc" style="color:var(--text)">Combat GM</span><span class="legend-pts">450+</span></div>
+        <div class="legend-row"><span class="legend-desc" style="color:var(--text)">Master</span><span class="legend-pts">300+</span></div>
+        <div class="legend-row"><span class="legend-desc" style="color:var(--text)">Elite</span><span class="legend-pts">150+</span></div>
+        <div class="legend-row"><span class="legend-desc" style="color:var(--text)">Expert</span><span class="legend-pts">75+</span></div>
+        <div class="legend-row"><span class="legend-desc" style="color:var(--text)">Skilled</span><span class="legend-pts">30+</span></div>
+        <div class="legend-row"><span class="legend-desc" style="color:var(--text)">Amateur</span><span class="legend-pts">10+</span></div>
+        <div class="legend-row"><span class="legend-desc" style="color:var(--text)">Rookie</span><span class="legend-pts">1+</span></div>
       </div>
     </div>
   </aside>
 </main>
 
-<footer>Copyrights © OF Tiers 2025</footer>
+<footer>© OF Tiers 2026 · Click any player to view their profile</footer>
 
 <script>
-const TIERS = ['Tier 1','Tier 2','Tier 3','Tier 4','Tier 5'];
-const MODES = ['overall','ltm','vanilla','uhc','pot','nethop','smp','sword','axe','mace','diamondsmp','cart'];
-const LABELS = {
-  overall:'Overall Rankings', ltm:'LTMs Rankings', vanilla:'Vanilla Rankings',
-  uhc:'UHC Rankings', pot:'Pot Rankings', nethop:'NethOP Rankings',
-  smp:'SMP Rankings', sword:'Sword Rankings', axe:'Axe Rankings',
-  mace:'Mace Rankings', diamondsmp:'Diamond SMP Rankings', cart:'Cart Rankings'
-};
+const TIERS        = ['Tier 1','Tier 2','Tier 3','Tier 4','Tier 5'];
+const POINTS       = {'Tier 1':60,'Tier 2':30,'Tier 3':15,'Tier 4':5,'Tier 5':1};
+const SCORE_MODES  = ['vanilla','uhc','pot','nethop','smp','sword','axe','mace','diamondsmp','cart'];
+const LABELS       = { overall:'Overall Rankings', vanilla:'Vanilla Rankings', uhc:'UHC Rankings', pot:'Pot Rankings', nethop:'NethOP Rankings', smp:'SMP Rankings', sword:'Sword Rankings', axe:'Axe Rankings', mace:'Mace Rankings', diamondsmp:'Diamond SMP Rankings', cart:'Cart Rankings' };
+const MODE_LABELS  = { overall:'Overall', vanilla:'Vanilla', uhc:'UHC', pot:'Pot', nethop:'NethOP', smp:'SMP', sword:'Sword', axe:'Axe', mace:'Mace', diamondsmp:'Diamond SMP', cart:'Cart' };
+const REGION_NAMES = { NA:'North America', AU:'Australia', EU:'Europe', AS:'Asia' };
+const RANK_TITLES  = [[450,'Combat Grandmaster'],[300,'Master'],[150,'Elite'],[75,'Expert'],[30,'Skilled'],[10,'Amateur'],[1,'Rookie'],[0,'Unranked']];
+const DATA_URL     = 'https://raw.githubusercontent.com/BruceKraft/OFTiers/main/players.json';
 
-const DATA_URL = 'https://raw.githubusercontent.com/BruceKraft/OFTiers/main/players.json';
-let allPlayers = [];
-let currentCat = 'overall', currentPage = 1, filtered = [];
+let allPlayers = [], currentCat = 'overall', currentPage = 1, filtered = [];
 const PER_PAGE = 20;
+
+function getPoints(p) {
+  return SCORE_MODES.reduce((s, m) => s + (POINTS[p.tiers?.[m]] || 0), 0);
+}
+function getRankTitle(pts) {
+  for (const [t, title] of RANK_TITLES) if (pts >= t) return title;
+  return 'Unranked';
+}
 
 async function fetchPlayers() {
   try {
@@ -300,75 +343,112 @@ async function fetchPlayers() {
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
     allPlayers = Object.values(data.players || {});
-    console.log('Loaded', allPlayers.length, 'players from GitHub');
-  } catch(e) {
-    console.error('Failed to load players:', e);
-  }
+  } catch(e) { console.error('Failed to load players:', e); }
 }
 
 function getPlayersForMode(mode) {
-  const ranked = allPlayers
-    .filter(p => p.tiers && p.tiers[mode])
+  if (mode === 'overall') {
+    return allPlayers
+      .map(p => ({ ...p, _pts: getPoints(p) }))
+      .sort((a, b) => b._pts - a._pts)
+      .map((p, i) => ({ rank: i+1, name: p.name, region: p.region, mainTier: p.tiers?.overall || null, pts: p._pts }));
+  }
+  return allPlayers
+    .filter(p => p.tiers?.[mode])
     .sort((a, b) => TIERS.indexOf(a.tiers[mode]) - TIERS.indexOf(b.tiers[mode]))
-    .map((p, i) => ({ rank: i + 1, name: p.name, region: p.region, mainTier: p.tiers[mode] }));
-  const unranked = allPlayers
-    .filter(p => !p.tiers || !p.tiers[mode])
-    .map(p => ({ rank: null, name: p.name, region: p.region, mainTier: null }));
-  return [...ranked, ...unranked];
+    .map((p, i) => ({ rank: i+1, name: p.name, region: p.region, mainTier: p.tiers[mode], pts: null }));
 }
 
 function renderTable(players, page) {
   const body = document.getElementById('table-body');
-  const slice = players.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+  const slice = players.slice((page-1)*PER_PAGE, page*PER_PAGE);
   if (!slice.length) { body.innerHTML = '<tr class="empty-row"><td colspan="4">No players ranked yet.</td></tr>'; return; }
+  const isOverall = currentCat === 'overall';
+  document.getElementById('tier-col-header').textContent = isOverall ? 'Points' : 'Tier';
   body.innerHTML = slice.map(p => {
-    const topClass = p.rank && p.rank <= 3 ? ' top' : '';
-    const rankDisplay = p.rank || '-';
-    const initials = p.name.replace(/[^A-Za-z]/g, '').slice(0, 2).toUpperCase() || '??';
-    const tierBadge = p.mainTier
-      ? `<span class="tier-badge tier-${p.mainTier}">${p.mainTier}</span>`
-      : `<span style="color:var(--muted);font-size:13px">unranked</span>`;
-    return `<tr>
-      <td><span class="rank-num${topClass}">${rankDisplay}</span></td>
+    const initials = p.name.replace(/[^A-Za-z]/g,'').slice(0,2).toUpperCase() || '??';
+    const avatar = `https://crafatar.com/avatars/${encodeURIComponent(p.name)}?size=38&overlay`;
+    let rankCell;
+    if (p.rank === 1) rankCell = `<span class="rank-medal">🥇</span>`;
+    else if (p.rank === 2) rankCell = `<span class="rank-medal">🥈</span>`;
+    else if (p.rank === 3) rankCell = `<span class="rank-medal">🥉</span>`;
+    else rankCell = `<span class="rank-num">${p.rank}</span>`;
+    let rowCls = '';
+    if (isOverall && p.rank === 1) rowCls = ' class="rank-gold"';
+    else if (isOverall && p.rank === 2) rowCls = ' class="rank-silver"';
+    else if (isOverall && p.rank === 3) rowCls = ' class="rank-bronze"';
+    const right = isOverall
+      ? `<span class="points-label">${p.pts} pts</span>`
+      : `<span class="tier-badge tier-${p.mainTier}">${p.mainTier}</span>`;
+    return `<tr${rowCls} onclick="openModal('${p.name.replace(/'/g,"\\'")}')">
+      <td>${rankCell}</td>
       <td><div class="player-cell">
-        <div class="player-avatar"><img src="https://crafatar.com/avatars/${p.name}?size=28&overlay" alt="${p.name}" width="28" height="28" style="border-radius:4px;display:block;" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\\'avatar-placeholder\\'>${initials}</span>'"></div>
+        <div class="player-avatar"><img src="${avatar}" width="38" height="38" style="display:block;border-radius:5px;" onerror="this.outerHTML='<span class=\\'avatar-placeholder\\'>${initials}</span>'"></div>
         <span class="player-name">${p.name}</span>
       </div></td>
       <td><span class="region-badge">${p.region}</span></td>
-      <td><div class="tiers-cell">${tierBadge}</div></td>
+      <td><div class="tiers-cell">${right}</div></td>
     </tr>`;
   }).join('');
 }
 
 function renderPagination(total, page) {
-  const pages = Math.ceil(total / PER_PAGE);
+  const pages = Math.ceil(total/PER_PAGE);
   const el = document.getElementById('pagination');
   if (pages <= 1) { el.innerHTML = ''; return; }
   let html = `<button class="page-btn" onclick="goPage(${page-1})" ${page===1?'disabled':''}>‹</button>`;
-  for (let i = 1; i <= pages; i++) {
-    if (i === 1 || i === pages || Math.abs(i - page) <= 1)
-      html += `<button class="page-btn${i===page?' active':''}" onclick="goPage(${i})">${i}</button>`;
-    else if (Math.abs(i - page) === 2)
-      html += `<span style="color:var(--muted);font-size:12px;padding:0 2px">…</span>`;
+  for (let i=1;i<=pages;i++) {
+    if (i===1||i===pages||Math.abs(i-page)<=1) html += `<button class="page-btn${i===page?' active':''}" onclick="goPage(${i})">${i}</button>`;
+    else if (Math.abs(i-page)===2) html += `<span style="color:var(--muted);font-size:12px;padding:0 2px">…</span>`;
   }
   html += `<button class="page-btn" onclick="goPage(${page+1})" ${page===pages?'disabled':''}>›</button>`;
   el.innerHTML = html;
 }
 
-function goPage(p) { currentPage = p; renderTable(filtered, currentPage); renderPagination(filtered.length, currentPage); window.scrollTo({top:0,behavior:'smooth'}); }
+function goPage(p) { currentPage=p; renderTable(filtered,currentPage); renderPagination(filtered.length,currentPage); window.scrollTo({top:0,behavior:'smooth'}); }
 
 function loadCategory(cat) {
-  currentCat = cat; currentPage = 1;
+  currentCat=cat; currentPage=1;
   document.getElementById('cat-label').textContent = LABELS[cat];
   document.getElementById('search').value = '';
   filtered = getPlayersForMode(cat);
-  renderTable(filtered, 1); renderPagination(filtered.length, 1);
+  renderTable(filtered,1); renderPagination(filtered.length,1);
 }
 
 async function refresh() {
   await fetchPlayers();
-  loadCategory(currentCat);
+  const q = document.getElementById('search').value.toLowerCase().trim();
+  filtered = q ? getPlayersForMode(currentCat).filter(p => p.name.toLowerCase().includes(q)) : getPlayersForMode(currentCat);
+  renderTable(filtered, currentPage); renderPagination(filtered.length, currentPage);
 }
+
+// MODAL
+function openModal(name) {
+  const p = allPlayers.find(x => x.name.toLowerCase() === name.toLowerCase());
+  if (!p) return;
+  const pts = getPoints(p);
+  const sorted = [...allPlayers].sort((a,b) => getPoints(b)-getPoints(a));
+  const pos = sorted.findIndex(x => x.name.toLowerCase() === name.toLowerCase()) + 1;
+
+  document.getElementById('modal-avatar').src = `https://crafatar.com/renders/head/${encodeURIComponent(p.name)}?size=110&overlay`;
+  document.getElementById('modal-name').textContent = p.name;
+  document.getElementById('modal-rank-badge').textContent = getRankTitle(pts);
+  document.getElementById('modal-region').textContent = REGION_NAMES[p.region] || p.region;
+  document.getElementById('modal-namemc').href = `https://namemc.com/profile/${p.name}`;
+  document.getElementById('modal-pos').textContent = pos ? `${pos}.` : '-';
+  document.getElementById('modal-pts').textContent = `${pts} points`;
+
+  const modeTiers = SCORE_MODES.filter(m => p.tiers?.[m]);
+  document.getElementById('modal-tiers').innerHTML = modeTiers.length
+    ? modeTiers.map(m => `<div class="modal-tier-row"><span class="modal-tier-mode">${MODE_LABELS[m]}</span><span class="tier-badge tier-${p.tiers[m]}">${p.tiers[m]}</span></div>`).join('')
+    : '<span style="color:var(--muted);font-size:13px">No mode tiers yet</span>';
+
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function closeModal(e) { if (e.target === document.getElementById('modal-overlay')) closeModalBtn(); }
+function closeModalBtn() { document.getElementById('modal-overlay').classList.remove('open'); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalBtn(); });
 
 document.getElementById('tabs').addEventListener('click', e => {
   const btn = e.target.closest('.tab-btn');
@@ -381,12 +461,12 @@ document.getElementById('tabs').addEventListener('click', e => {
 document.getElementById('search').addEventListener('input', e => {
   const q = e.target.value.toLowerCase().trim();
   filtered = q ? getPlayersForMode(currentCat).filter(p => p.name.toLowerCase().includes(q)) : getPlayersForMode(currentCat);
-  currentPage = 1; renderTable(filtered, 1); renderPagination(filtered.length, 1);
+  currentPage=1; renderTable(filtered,1); renderPagination(filtered.length,1);
+  if (q) { const exact = allPlayers.find(p => p.name.toLowerCase() === q); if (exact) openModal(exact.name); }
 });
 
-// Initial load then refresh every 15 seconds
 refresh();
-setInterval(refresh, 15000);
+setInterval(refresh, 5000);
 </script>
 </body>
 </html>
