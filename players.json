@@ -125,6 +125,12 @@
       "region": "NA",
       "tiers": {},
       "added": "2026-04-20T07:23:26.430812"
+    },
+    "notgehas": {
+      "name": "NotGehas",
+      "region": "EU",
+      "tiers": {},
+      "added": "2026-04-20T07:24:22.871338"
     }
   }
 }
