@@ -157,7 +157,9 @@
     "butterboyultra": {
       "name": "butterboyultra",
       "region": "NA",
-      "tiers": {},
+      "tiers": {
+        "sword": "Tier 3"
+      },
       "added": "2026-04-21T18:11:54.737281"
     },
     "imflintyy": {
