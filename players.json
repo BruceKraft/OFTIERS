@@ -4,7 +4,8 @@
       "name": "V0RTALITY",
       "region": "AU",
       "tiers": {
-        "overall": "Tier 4"
+        "overall": "Tier 4",
+        "vanilla": "Tier 3"
       },
       "added": "2026-04-20T05:24:27.529752"
     },
