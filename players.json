@@ -163,7 +163,9 @@
     "imflintyy": {
       "name": "ImFlintyy",
       "region": "NA",
-      "tiers": {},
+      "tiers": {
+        "spearmace": "Tier 2"
+      },
       "added": "2026-04-21T23:38:00.945075"
     }
   }
