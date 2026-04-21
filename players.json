@@ -161,6 +161,12 @@
       "region": "EU",
       "tiers": {},
       "added": "2026-04-21T04:33:23.374218"
+    },
+    "that1_toasty": {
+      "name": "That1_Toasty",
+      "region": "NA",
+      "tiers": {},
+      "added": "2026-04-21T04:33:56.330194"
     }
   }
 }
