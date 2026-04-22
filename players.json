@@ -80,7 +80,9 @@
     "vlomc": {
       "name": "VloMC",
       "region": "NA",
-      "tiers": {},
+      "tiers": {
+        "sword": "Tier 4"
+      },
       "added": "2026-04-20T07:21:05.556744"
     },
     "nutella_boi": {
