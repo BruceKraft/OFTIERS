@@ -44,7 +44,9 @@
     "zelcolm": {
       "name": "Zelcolm",
       "region": "NA",
-      "tiers": {},
+      "tiers": {
+        "sword": "Tier 2"
+      },
       "added": "2026-04-20T06:33:58.560835"
     },
     "zvitali": {
