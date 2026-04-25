@@ -14,7 +14,8 @@
       "name": "qzac2",
       "region": "NA",
       "tiers": {
-        "uhc": "Tier 3"
+        "uhc": "Tier 3",
+        "nethop": "Tier 3"
       },
       "added": "2026-04-20T05:55:50.490704"
     },
