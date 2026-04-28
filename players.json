@@ -189,7 +189,9 @@
     "jeffrey_6906": {
       "name": "Jeffrey_6906",
       "region": "NA",
-      "tiers": {},
+      "tiers": {
+        "sword": "Tier 3"
+      },
       "added": "2026-04-28T20:26:39.724546"
     }
   }
