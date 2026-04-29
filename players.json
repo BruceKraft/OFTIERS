@@ -25,7 +25,8 @@
       "region": "EU",
       "tiers": {
         "mace": "Tier 1",
-        "uhc": "Tier 2"
+        "uhc": "Tier 2",
+        "axe": "Tier 2"
       },
       "added": "2026-04-20T05:56:31.508135"
     },
