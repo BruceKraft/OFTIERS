@@ -182,6 +182,12 @@
       "region": "NA",
       "tiers": {},
       "added": "2026-04-30T22:51:37.912405"
+    },
+    "marshypl": {
+      "name": "MarshyPL",
+      "region": "EU",
+      "tiers": {},
+      "added": "2026-04-30T22:52:08.756163"
     }
   }
 }
