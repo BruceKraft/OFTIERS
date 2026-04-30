@@ -182,6 +182,12 @@
         "sword": "Tier 3"
       },
       "added": "2026-04-28T20:26:39.724546"
+    },
+    "that1_toasty": {
+      "name": "That1_Toasty",
+      "region": "NA",
+      "tiers": {},
+      "added": "2026-04-30T22:51:37.912405"
     }
   }
 }
