@@ -33,9 +33,7 @@
     "meepv1": {
       "name": "MeepV1",
       "region": "NA",
-      "tiers": {
-        "mace": "Tier 2"
-      },
+      "tiers": {},
       "added": "2026-04-20T06:33:13.975769"
     },
     "noneiess": {
