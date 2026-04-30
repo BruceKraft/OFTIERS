@@ -3,9 +3,7 @@
     "v0rtality": {
       "name": "V0RTALITY",
       "region": "AU",
-      "tiers": {
-        "smp": "Tier 3"
-      },
+      "tiers": {},
       "added": "2026-04-20T05:24:27.529752"
     },
     "qzac2": {
