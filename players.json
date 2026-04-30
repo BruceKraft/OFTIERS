@@ -180,7 +180,9 @@
     "that1_toasty": {
       "name": "That1_Toasty",
       "region": "NA",
-      "tiers": {},
+      "tiers": {
+        "cart": "Tier 1"
+      },
       "added": "2026-04-30T22:51:37.912405"
     },
     "marshypl": {
