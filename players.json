@@ -172,7 +172,8 @@
       "name": "ImFlintyy",
       "region": "NA",
       "tiers": {
-        "spearmace": "Tier 1"
+        "spearmace": "Tier 1",
+        "uhc": "Tier 4"
       },
       "added": "2026-04-21T23:38:00.945075"
     },
