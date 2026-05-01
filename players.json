@@ -157,7 +157,8 @@
       "name": "Avoliton_",
       "region": "NA",
       "tiers": {
-        "uhc": "Tier 4"
+        "uhc": "Tier 4",
+        "vanilla": "Tier 3"
       },
       "added": "2026-04-21T04:32:44.941805"
     },
