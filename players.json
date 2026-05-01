@@ -142,7 +142,9 @@
     "ghxstyy999": {
       "name": "GHXSTYY999",
       "region": "EU",
-      "tiers": {},
+      "tiers": {
+        "sword": "Tier 5"
+      },
       "added": "2026-04-20T07:30:20.090065"
     },
     "thatnerdtristan": {
