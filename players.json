@@ -158,7 +158,8 @@
       "region": "NA",
       "tiers": {
         "uhc": "Tier 4",
-        "vanilla": "Tier 3"
+        "vanilla": "Tier 3",
+        "sword": "Tier 3"
       },
       "added": "2026-04-21T04:32:44.941805"
     },
