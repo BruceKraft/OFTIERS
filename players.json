@@ -51,7 +51,8 @@
       "region": "EU",
       "tiers": {
         "nethpot": "Tier 1",
-        "axe": "Tier 2"
+        "axe": "Tier 2",
+        "smp": "Tier 3"
       },
       "added": "2026-04-20T07:18:30.204510"
     },
