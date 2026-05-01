@@ -127,7 +127,8 @@
       "name": "NotGehas",
       "region": "EU",
       "tiers": {
-        "vanilla": "Tier 4"
+        "vanilla": "Tier 4",
+        "pot": "Tier 3"
       },
       "added": "2026-04-20T07:24:22.871338"
     },
