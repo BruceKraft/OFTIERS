@@ -49,7 +49,9 @@
     "zvitali": {
       "name": "zVitali",
       "region": "EU",
-      "tiers": {},
+      "tiers": {
+        "nethpot": "Tier 1"
+      },
       "added": "2026-04-20T07:18:30.204510"
     },
     "master_microwave": {
