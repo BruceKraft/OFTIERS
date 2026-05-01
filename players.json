@@ -50,7 +50,8 @@
       "name": "zVitali",
       "region": "EU",
       "tiers": {
-        "nethpot": "Tier 1"
+        "nethpot": "Tier 1",
+        "axe": "Tier 2"
       },
       "added": "2026-04-20T07:18:30.204510"
     },
