@@ -126,7 +126,9 @@
     "notgehas": {
       "name": "NotGehas",
       "region": "EU",
-      "tiers": {},
+      "tiers": {
+        "vanilla": "Tier 4"
+      },
       "added": "2026-04-20T07:24:22.871338"
     },
     "kornocs": {
