@@ -208,6 +208,12 @@
       "region": "EU",
       "tiers": {},
       "added": "2026-04-30T22:52:08.756163"
+    },
+    "avoliton": {
+      "name": "Avoliton",
+      "region": "NA",
+      "tiers": {},
+      "added": "2026-05-02T20:22:05.381564"
     }
   }
 }
