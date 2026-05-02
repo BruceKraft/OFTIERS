@@ -208,6 +208,12 @@
         "uhc": "Tier 4"
       },
       "added": "2026-05-02T20:22:05.381564"
+    },
+    "reapersans1": {
+      "name": "Reapersans1",
+      "region": "NA",
+      "tiers": {},
+      "added": "2026-05-02T23:31:35.611053"
     }
   }
 }
