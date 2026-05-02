@@ -109,7 +109,8 @@
       "name": "potens_",
       "region": "NA",
       "tiers": {
-        "vanilla": "Tier 3"
+        "vanilla": "Tier 3",
+        "spearmace": "Tier 3"
       },
       "added": "2026-04-20T07:22:16.413363"
     },
