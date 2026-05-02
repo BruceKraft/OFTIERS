@@ -108,7 +108,9 @@
     "potens_": {
       "name": "potens_",
       "region": "NA",
-      "tiers": {},
+      "tiers": {
+        "vanilla": "Tier 3"
+      },
       "added": "2026-04-20T07:22:16.413363"
     },
     "last_awakened": {
