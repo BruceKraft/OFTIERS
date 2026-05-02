@@ -212,7 +212,9 @@
     "avoliton": {
       "name": "Avoliton",
       "region": "NA",
-      "tiers": {},
+      "tiers": {
+        "sword": "Tier 3"
+      },
       "added": "2026-05-02T20:22:05.381564"
     }
   }
