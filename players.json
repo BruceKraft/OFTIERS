@@ -32,7 +32,8 @@
       "name": "MeepV1",
       "region": "NA",
       "tiers": {
-        "diamondsmp": "Tier 2"
+        "diamondsmp": "Tier 2",
+        "mace": "Tier 1"
       },
       "added": "2026-04-20T06:33:13.975769"
     },
