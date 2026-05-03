@@ -123,7 +123,9 @@
     "knackv": {
       "name": "knackv",
       "region": "EU",
-      "tiers": {},
+      "tiers": {
+        "sword": "Tier 5"
+      },
       "added": "2026-04-20T07:23:06.185707"
     },
     "notgehas": {
