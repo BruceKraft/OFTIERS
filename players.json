@@ -167,7 +167,8 @@
       "region": "NA",
       "tiers": {
         "sword": "Tier 3",
-        "diamondsmp": "Tier 4"
+        "diamondsmp": "Tier 4",
+        "nethpot": "Tier 5"
       },
       "added": "2026-04-21T18:11:54.737281"
     },
