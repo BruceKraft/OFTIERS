@@ -168,7 +168,8 @@
       "tiers": {
         "sword": "Tier 3",
         "diamondsmp": "Tier 4",
-        "nethpot": "Tier 5"
+        "nethpot": "Tier 5",
+        "smp": "Tier 4"
       },
       "added": "2026-04-21T18:11:54.737281"
     },
