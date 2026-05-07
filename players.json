@@ -181,7 +181,8 @@
       "region": "NA",
       "tiers": {
         "spearmace": "Tier 1",
-        "uhc": "Tier 4"
+        "uhc": "Tier 4",
+        "sword": "Tier 3"
       },
       "added": "2026-04-21T23:38:00.945075"
     },
