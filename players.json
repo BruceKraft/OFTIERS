@@ -236,7 +236,9 @@
     "itzmecortex2785": {
       "name": "itzmeCortex2785",
       "region": "NA",
-      "tiers": {},
+      "tiers": {
+        "sword": "Tier 4"
+      },
       "added": "2026-05-04T05:31:03.448484"
     }
   }
