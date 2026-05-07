@@ -204,7 +204,8 @@
       "name": "That1_Toasty",
       "region": "NA",
       "tiers": {
-        "cart": "Tier 1"
+        "cart": "Tier 1",
+        "sword": "Tier 4"
       },
       "added": "2026-04-30T22:51:37.912405"
     },
