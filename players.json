@@ -80,7 +80,8 @@
       "name": "LxveRaiden",
       "region": "NA",
       "tiers": {
-        "sword": "Tier 2"
+        "sword": "Tier 2",
+        "pot": "Tier 1"
       },
       "added": "2026-04-20T07:20:09.464213"
     },
