@@ -81,7 +81,8 @@
       "region": "NA",
       "tiers": {
         "sword": "Tier 2",
-        "pot": "Tier 1"
+        "pot": "Tier 1",
+        "vanilla": "Tier 2"
       },
       "added": "2026-04-20T07:20:09.464213"
     },
