@@ -37,7 +37,8 @@
       "tiers": {
         "diamondsmp": "Tier 2",
         "mace": "Tier 1",
-        "cart": "Tier 3"
+        "cart": "Tier 3",
+        "vanilla": "Tier 3"
       },
       "added": "2026-04-20T06:33:13.975769"
     },
