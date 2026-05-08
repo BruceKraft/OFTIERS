@@ -209,7 +209,8 @@
       "region": "NA",
       "tiers": {
         "cart": "Tier 1",
-        "sword": "Tier 4"
+        "sword": "Tier 4",
+        "spearmace": "Tier 3"
       },
       "added": "2026-04-30T22:51:37.912405"
     },
