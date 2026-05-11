@@ -242,7 +242,9 @@
     "brucekr4ft": {
       "name": "BruceKr4ft",
       "region": "AU",
-      "tiers": {},
+      "tiers": {
+        "mace": "Tier 4"
+      },
       "added": "2026-05-11T05:05:06.361845"
     }
   }
