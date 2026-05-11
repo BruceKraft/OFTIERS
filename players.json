@@ -238,6 +238,12 @@
         "sword": "Tier 4"
       },
       "added": "2026-05-04T05:31:03.448484"
+    },
+    "brucekr4ft": {
+      "name": "BruceKr4ft",
+      "region": "AU",
+      "tiers": {},
+      "added": "2026-05-11T05:05:06.361845"
     }
   }
 }
