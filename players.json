@@ -235,7 +235,9 @@
     "iamknoxx": {
       "name": "IAmKnoxx",
       "region": "NA",
-      "tiers": {},
+      "tiers": {
+        "sword": "Tier 3"
+      },
       "added": "2026-05-13T04:44:54.407822"
     }
   }
