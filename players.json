@@ -204,7 +204,9 @@
     "marshypl": {
       "name": "MarshyPL",
       "region": "EU",
-      "tiers": {},
+      "tiers": {
+        "nethpot": "Tier 2"
+      },
       "added": "2026-04-30T22:52:08.756163"
     },
     "avoliton": {
