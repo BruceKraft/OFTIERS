@@ -205,7 +205,8 @@
       "name": "MarshyPL",
       "region": "EU",
       "tiers": {
-        "nethpot": "Tier 2"
+        "nethpot": "Tier 2",
+        "vanilla": "Tier 3"
       },
       "added": "2026-04-30T22:52:08.756163"
     },
